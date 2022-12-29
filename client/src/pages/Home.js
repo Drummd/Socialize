@@ -11,8 +11,13 @@ function Home() {
   const { user } = useContext(AuthContext);
   const {
     loading,
-    data: { getPosts: posts }
+    data
   } = useQuery(FETCH_POSTS_QUERY);
+
+  let posts = []
+  if (data) posts = data.getPosts
+
+  console.log('HomeComponent', {loading, data})
 
   return (
     <Grid columns={3}>
